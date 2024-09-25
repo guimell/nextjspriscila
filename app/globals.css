@@ -86,7 +86,7 @@ main {
     --brand-color: 38 57% 53%; /* Gold (#CC9A44) */
 
     /* Card Colors */
-    --card: 38 57% 98%; /* Extremely light gold for cards */
+    --card: var(--brand-color); /* Extremely light gold for cards */
     --card-foreground: 20 14.3% 4.1%; /* Dark text */
 
     /* Popover Colors */
@@ -126,19 +126,19 @@ main {
     --chart-4: 43 74% 66%; /* Yellow */
     --chart-5: 27 87% 67%; /* Orange */
   }
-
+  
   /* Dark Mode Variables */
   @media (prefers-color-scheme: dark) {
     :root {
       /* Primary Colors */
-      --background: 20 14.3% 4.1%; /* Dark background */
+      --background: 197 100% 5%; /* Dark background */
       --foreground: 60 9.1% 97.8%; /* Light text */
 
       /* Brand Color */
       --brand-color: 38 57% 53%; /* Gold (#CC9A44) */
 
       /* Card Colors */
-      --card: 20 14.3% 10%; /* Slightly lighter dark background for cards */
+      --card: 41 43% 31%; /* Slightly lighter dark background for cards */
       --card-foreground: 60 9.1% 97.8%; /* Light text */
 
       /* Popover Colors */

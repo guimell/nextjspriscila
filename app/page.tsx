@@ -73,13 +73,13 @@ export default function Home() {
             return (
               <Card
                 key={`card-${index}`}
-                className="flex flex-col w-auto md:w-1/3 items-center justify-center"
+                className="group relative flex flex-col w-auto md:w-1/3 min-h-32 items-center justify-center overflow-hidden"
               >
-                <CardHeader className="flex flex-col  items-center justify-center">
+                <CardHeader className="flex flex-col items-center justify-center">
                   {item.icon}
                   <CardTitle>{item.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="md:absolute md:bottom-0 md:left-0 md:right-0 md:bg-inherit md:translate-y-full md:group-hover:translate-y-0 md:transition-transform md:duration-300 md:ease-in-out">
                   <p>{item.description}</p>
                 </CardContent>
               </Card>
@@ -154,13 +154,13 @@ const data = [
   },
   {
     icon: <Eye className="w-10 h-10" />,
-    title: "nossa visão",
+    title: "Nossa Visão",
     description:
       "Ser reconhecida nacionalmente pela qualidade do serviços e atendimento aos clientes.",
   },
   {
     icon: <Star className="w-10 h-10" />,
-    title: "nossos valores",
+    title: "Nossos Valores",
     description: (
       <ul>
         <li>• A vida em 1 lugar</li>

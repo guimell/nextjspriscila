@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
+import { Instagram, Facebook } from "lucide-react";
 const formSchema = z.object({
   nome: z.string().min(2, {
     message: "Nome deve ter pelo menos 2 caracteres.",
@@ -60,15 +60,31 @@ export default function Contato() {
 
   return (
     <main className="flex flex-col gap-8 items-center justify-center ">
-      <Card className="w-full">
-        <h1>Informações de contato</h1>
-        <p>+55 71-98161-8308</p>
-        <p>comercial@p2psaudeeseguranca.com.br</p>
-        <p>siga nossas redes sociais</p>
-        <div className="flex flex-row gap-6">
-          <Link href={""}>instagram</Link>
-          <Link href={""}>facebook</Link>
-        </div>
+      <Card className="flex flex-col w-full items-center">
+        <CardHeader>
+          <CardTitle>Informações de contato</CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-4 items-center">
+          <p>+55 71-98161-8308</p>
+          <p>comercial@p2psaudeeseguranca.com.br</p>
+          <p>siga nossas redes sociais</p>
+          <div className="flex flex-row gap-6">
+            <Link
+              href="https://www.instagram.com/p2psaudeeseg/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Instagram />
+            </Link>
+            <Link
+              href="https://www.facebook.com/p2psaudeeseg?_rdc=1&_rdr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Facebook />
+            </Link>
+          </div>
+        </CardContent>
       </Card>
       <Card className="w-full">
         <CardHeader>
