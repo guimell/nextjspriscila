@@ -1,52 +1,68 @@
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
+import logo from "@/public/brand/p2pLogo.png";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 right-0 z-50 bg-gray-800 w-full h-16">
-      <div className="flex justify-between items-center">
-        <div className="text-white text-xl"></div>
-        <button
-          className="text-white block lg:hidden"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {/* Hamburger Icon */}
-          <svg
-            className="w-10 h-10"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-            ></path>
-          </svg>
-        </button>
-      </div>
+    <nav className=" flex flex-row w-full h-16 items-center justify-between p-2 sticky top-0 right-0 z-50 bg-background bg-opacity-10 backdrop-blur-md shadow-md">
+      <Image src={logo} alt={""} width={80} height={80}></Image>
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <SheetTrigger className="flex md:hidden">
+          <Menu className="text-primary-foreground" />
+        </SheetTrigger>
+        <SheetContent className="flex flex-col items-center">
+          {routes.map(function (link, index) {
+            return (
+              <Link
+                key={`navLink--${index}`}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+        </SheetContent>
+      </Sheet>
 
-      {/* Menu Items */}
-      <div className={`lg:flex ${isOpen ? "block" : "hidden"} lg:block`}>
-        <ul className="space-y-2 lg:space-y-0 lg:space-x-4 lg:flex text-white">
-          <li>
-            <Link href={"/home"}>Home</Link>
-          </li>
-          <li>
-            <Link href={"/servicos"}>Serviços</Link>
-          </li>
-          <li>
-            <Link href={"/blog"}> Blog</Link>
-          </li>
-          <li>
-            <Link href={"/contato"}> Contato</Link>
-          </li>
-        </ul>
-      </div>
+      <NavigationMenu className="hidden md:flex">
+        <NavigationMenuList className="gap-6">
+          {routes.map(function (link, index) {
+            return (
+              <NavigationMenuItem key={`navLink--${index}`}>
+                <Link
+                  legacyBehavior
+                  passHref
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    {link.name}
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+            );
+          })}
+        </NavigationMenuList>
+      </NavigationMenu>
     </nav>
   );
 }
+
+const routes: { href: string; name: string }[] = [
+  { name: "Home", href: "/" },
+  { name: "Serviços", href: "/servicos" },
+  { name: "Contato", href: "/contato" },
+];
