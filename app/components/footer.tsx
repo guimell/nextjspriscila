@@ -1,15 +1,14 @@
-import { Facebook, Instagram } from "lucide-react";
-
+import { SiFacebook, SiInstagram } from "@icons-pack/react-simple-icons";
 export default function Footer() {
   return (
-    <footer className="flex-wrap row-start-3 flex gap-6 p-6  items-center justify-center ">
+    <footer className="flex flex-wrap items-center justify-center gap-6 p-6">
       <a
         className="flex items-center gap-2 hover:underline hover:underline-offset-4"
         href="https://www.instagram.com/p2psaudeeseg/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Instagram />
+        <SiInstagram />
         Instagram
       </a>
       <a
@@ -18,7 +17,7 @@ export default function Footer() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Facebook />
+        <SiFacebook />
         Facebook
       </a>
     </footer>

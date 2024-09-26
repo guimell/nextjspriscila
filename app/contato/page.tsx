@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Instagram, Facebook } from "lucide-react";
+import { SiFacebook, SiInstagram } from "@icons-pack/react-simple-icons";
 const formSchema = z.object({
   nome: z.string().min(2, {
     message: "Nome deve ter pelo menos 2 caracteres.",
@@ -112,12 +112,12 @@ Mensagem: ${values.mensagem}`,
   };
 
   return (
-    <main className="flex flex-col gap-8 items-center justify-center ">
-      <Card className="flex flex-col w-full items-center">
+    <main className="flex flex-col items-center justify-center gap-8">
+      <Card className="flex w-full flex-col items-center">
         <CardHeader>
           <CardTitle>Informações de contato</CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-col gap-4 items-center">
+        <CardContent className="flex flex-col items-center gap-4">
           <p>+55 71-98161-8308</p>
           <p>comercial@p2psaudeeseguranca.com.br</p>
           <p>siga nossas redes sociais</p>
@@ -127,14 +127,14 @@ Mensagem: ${values.mensagem}`,
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Instagram />
+              <SiInstagram />
             </Link>
             <Link
               href="https://www.facebook.com/p2psaudeeseg?_rdc=1&_rdr"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Facebook />
+              <SiFacebook />
             </Link>
           </div>
         </CardContent>
@@ -147,7 +147,7 @@ Mensagem: ${values.mensagem}`,
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="flex flex-col w-full space-y-4"
+              className="flex w-full flex-col space-y-4"
             >
               <FormField
                 control={form.control}

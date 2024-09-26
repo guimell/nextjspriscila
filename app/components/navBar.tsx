@@ -16,48 +16,48 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className=" flex flex-row w-full h-16 items-center justify-between p-2 sticky top-0 right-0 z-50 bg-background bg-opacity-10 backdrop-blur-md shadow-md">
-      <Image src={logo} alt={""} width={80} height={80}></Image>
-      <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <SheetTrigger className="flex md:hidden">
-          <Menu className="text-foreground" />
-        </SheetTrigger>
-        <SheetContent className="flex flex-col items-center">
-          {routes.map(function (link, index) {
-            return (
-              <Link
-                key={`navLink--${index}`}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
-        </SheetContent>
-      </Sheet>
-
-      <NavigationMenu className="hidden md:flex">
-        <NavigationMenuList className="gap-6">
-          {routes.map(function (link, index) {
-            return (
-              <NavigationMenuItem key={`navLink--${index}`}>
+    <div className=" bg-background bg-opacity-10 backdrop-blur-md shadow-md sticky top-0 right-0 z-50 ">
+      <nav className=" flex flex-row w-full h-16 max-w-7xl mx-auto items-center justify-between p-2 ">
+        <Image src={logo} alt={""} width={80} height={80}></Image>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger className="flex md:hidden">
+            <Menu className="text-foreground" />
+          </SheetTrigger>
+          <SheetContent className="flex flex-col items-center">
+            {routes.map(function (link, index) {
+              return (
                 <Link
-                  legacyBehavior
-                  passHref
+                  key={`navLink--${index}`}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
                 >
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    {link.name}
-                  </NavigationMenuLink>
+                  {link.name}
                 </Link>
-              </NavigationMenuItem>
-            );
-          })}
-        </NavigationMenuList>
-      </NavigationMenu>
-    </nav>
+              );
+            })}
+          </SheetContent>
+        </Sheet>
+
+        <NavigationMenu className="hidden md:flex">
+          <NavigationMenuList className="gap-6">
+            {routes.map(function (link, index) {
+              return (
+                <NavigationMenuItem key={`navLink--${index}`}>
+                  <Link legacyBehavior passHref href={link.href}>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              );
+            })}
+          </NavigationMenuList>
+        </NavigationMenu>
+      </nav>
+    </div>
   );
 }
 
