@@ -56,7 +56,60 @@ export default function Contato() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    sendEmail({
+      name: values.nome,
+      email: values.email,
+      subject: `Contato de ${values.empresa}`,
+      message: `Nome: ${values.nome}
+Email: ${values.email}
+Telefone: ${values.telefone}
+Empresa: ${values.empresa}
+CNPJ: ${values.cnpj}
+Funcionários: ${values.funcionarios}
+Mensagem: ${values.mensagem}`,
+    });
   }
+
+  interface EmailParams {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  }
+
+  const sendEmail = async ({
+    name,
+    email,
+    subject,
+    message,
+  }: EmailParams): Promise<boolean> => {
+    const serviceID = "service_5io0bdq";
+    const templateID = "template_ksmrhks";
+    const userID = "7HSzBI9HYk-Fk7Ye3";
+
+    const url = "https://api.emailjs.com/api/v1.0/email/send";
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        origin: "http://localhost",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        service_id: serviceID,
+        template_id: templateID,
+        user_id: userID,
+        template_params: {
+          user_name: name,
+          user_email: email,
+          user_subject: subject,
+          user_message: message,
+        },
+      }),
+    });
+
+    return response.ok; // returns true if response status is 200-299, else false
+  };
 
   return (
     <main className="flex flex-col gap-8 items-center justify-center ">
