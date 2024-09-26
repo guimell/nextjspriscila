@@ -118,11 +118,22 @@ Mensagem: ${values.mensagem}`,
           <CardTitle>Informações de contato</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col items-center gap-4">
-          <p>+55 71-98161-8308</p>
-          <p>comercial@p2psaudeeseguranca.com.br</p>
+          <a
+            href="tel:+5571981618308"
+            className="hover:text-accent hover:underline"
+          >
+            +55 71-98161-8308
+          </a>
+          <a
+            href="mailto:comercial@p2psaudeeseguranca.com.br"
+            className="hover:text-accent hover:underline"
+          >
+            comercial@p2psaudeeseguranca.com.br
+          </a>
           <p>siga nossas redes sociais</p>
           <div className="flex flex-row gap-6">
             <Link
+              className="hover:text-accent"
               href="https://www.instagram.com/p2psaudeeseg/"
               target="_blank"
               rel="noopener noreferrer"
@@ -130,6 +141,7 @@ Mensagem: ${values.mensagem}`,
               <SiInstagram />
             </Link>
             <Link
+              className="hover:text-accent"
               href="https://www.facebook.com/p2psaudeeseg?_rdc=1&_rdr"
               target="_blank"
               rel="noopener noreferrer"

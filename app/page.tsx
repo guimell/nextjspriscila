@@ -103,7 +103,7 @@ export default function Home() {
               height={150}
             />
             <div className="flex flex-col gap-2">
-              <p className="text-center">Dra.Priscila Merces</p>
+              <p className="text-center font-bold">Dra.Priscila Merces</p>
               <p>
                 Médica do trabalho, membro da Associação de medicina do
                 trabalho, especialista em Perícias médicas pela Fundação Unimed
@@ -131,7 +131,7 @@ export default function Home() {
               height={150}
             />
             <div className="flex flex-col gap-2">
-              <p className="text-center">Eng. Rosana Luz</p>
+              <p className="text-center font-bold">Eng. Rosana Luz</p>
               <p>
                 Engenheira de Produção, especialista em segurança do trabalho e
                 formação em higiene ocupacional. Com mais de 12 anos de
