@@ -20,7 +20,7 @@ export default function Navbar() {
       <Image src={logo} alt={""} width={80} height={80}></Image>
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger className="flex md:hidden">
-          <Menu className="text-primary-foreground" />
+          <Menu className="text-foreground" />
         </SheetTrigger>
         <SheetContent className="flex flex-col items-center">
           {routes.map(function (link, index) {
