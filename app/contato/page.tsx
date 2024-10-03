@@ -16,6 +16,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SiFacebook, SiInstagram } from "@icons-pack/react-simple-icons";
+import emailjs from "@emailjs/browser";
+
 const formSchema = z.object({
   nome: z.string().min(2, {
     message: "Nome deve ter pelo menos 2 caracteres.",
@@ -54,61 +56,37 @@ export default function Contato() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    sendEmail({
-      name: values.nome,
-      email: values.email,
-      subject: `Contato de ${values.empresa}`,
-      message: `Nome: ${values.nome}
-Email: ${values.email}
-Telefone: ${values.telefone}
-Empresa: ${values.empresa}
-CNPJ: ${values.cnpj}
-Funcionários: ${values.funcionarios}
-Mensagem: ${values.mensagem}`,
-    });
-  }
+  const sendEmail = async (formData: z.infer<typeof formSchema>) => {
+    const serviceID = "service_023mihm";
+    const templateID = "template_yfok8kk";
+    const userID = "4rFkLGthCDrgOz6fV";
 
-  interface EmailParams {
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
-  }
-
-  const sendEmail = async ({
-    name,
-    email,
-    subject,
-    message,
-  }: EmailParams): Promise<boolean> => {
-    const serviceID = "service_5io0bdq";
-    const templateID = "template_ksmrhks";
-    const userID = "7HSzBI9HYk-Fk7Ye3";
-
-    const url = "https://api.emailjs.com/api/v1.0/email/send";
-
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        origin: "http://localhost",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        service_id: serviceID,
-        template_id: templateID,
-        user_id: userID,
-        template_params: {
-          user_name: name,
-          user_email: email,
-          user_subject: subject,
-          user_message: message,
+    try {
+      const result = await emailjs.send(
+        serviceID,
+        templateID,
+        {
+          user_name: formData.nome,
+          user_email: formData.email,
+          user_telefone: formData.telefone,
+          user_empresa: formData.empresa,
+          user_cnpj: formData.cnpj,
+          user_funcionarios: formData.funcionarios,
+          user_message: formData.mensagem,
         },
-      }),
-    });
+        userID,
+      );
+      if (result.status === 200) {
+        alert("Mensagem enviada com sucesso!");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar e-mail:", error);
+      alert("Erro ao enviar e-mail. Tente novamente mais tarde.");
+    }
+  };
 
-    return response.ok; // returns true if response status is 200-299, else false
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    sendEmail(values);
   };
 
   return (

@@ -79,9 +79,10 @@ export default function Home() {
                     {item.icon}
                     <CardTitle>{item.title}</CardTitle>
                   </CardHeader>
-                  <CardContent className="md:absolute md:bottom-0 md:left-0 md:right-0 md:translate-y-full md:bg-inherit md:transition-transform md:duration-300 md:ease-in-out md:group-hover:translate-y-0">
+                  {/* <CardContent className="lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:translate-y-full lg:bg-inherit lg:transition-transform lg:duration-300 lg:ease-in-out lg:group-hover:translate-y-0">
                     {item.description}
-                  </CardContent>
+                  </CardContent> */}
+                  <CardContent>{item.description}</CardContent>
                 </Card>
               );
             })}
@@ -93,16 +94,18 @@ export default function Home() {
 
         {/* Dra.Priscila */}
         <Card>
-          <CardContent className="flex flex-col items-center justify-center gap-2">
-            <Image
-              className="m-2 h-40 w-40 rounded-full object-cover"
-              aria-hidden
-              src={pity}
-              alt="File icon"
-              width={150}
-              height={150}
-            />
-            <div className="flex flex-col gap-2">
+          <CardContent className="flex flex-col items-center justify-center gap-2 md:flex-row">
+            <div className="flex w-1/3 justify-center">
+              <Image
+                className="m-2 h-40 w-40 rounded-full object-cover"
+                aria-hidden
+                src={pity}
+                alt="File icon"
+                width={150}
+                height={150}
+              />
+            </div>
+            <div className="flex w-full flex-col gap-2">
               <p className="text-center font-bold">Dra.Priscila Merces</p>
               <p>
                 Médica do trabalho, membro da Associação de medicina do
@@ -121,16 +124,18 @@ export default function Home() {
 
         {/* Eng.Rosana */}
         <Card>
-          <CardContent className="flex flex-col items-center justify-center gap-2">
-            <Image
-              className="m-2 h-40 w-40 rounded-full object-cover"
-              aria-hidden
-              src={engenheira}
-              alt="File icon"
-              width={150}
-              height={150}
-            />
-            <div className="flex flex-col gap-2">
+          <CardContent className="flex flex-col items-center justify-center gap-2 md:flex-row">
+            <div className="flex w-1/3 justify-center">
+              <Image
+                className="m-2 h-40 w-40 rounded-full object-cover"
+                aria-hidden
+                src={engenheira}
+                alt="File icon"
+                width={150}
+                height={150}
+              />
+            </div>
+            <div className="flex w-full flex-col gap-2">
               <p className="text-center font-bold">Eng. Rosana Luz</p>
               <p>
                 Engenheira de Produção, especialista em segurança do trabalho e
