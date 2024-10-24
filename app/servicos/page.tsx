@@ -22,7 +22,7 @@ export default function Serviços() {
                   <a
                     key={`title-${index}`}
                     href={`#section-${index}`}
-                    className="flex hover:text-accent hover:underline"
+                    className="flex hover:text-secondary hover:underline dark:hover:text-accent"
                   >
                     <span className="mr-2">•</span>
                     {service.title}

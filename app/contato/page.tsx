@@ -98,20 +98,20 @@ export default function Contato() {
         <CardContent className="flex flex-col items-center gap-4">
           <a
             href="tel:+5571981618308"
-            className="hover:text-accent hover:underline"
+            className="hover:text-secondary hover:underline dark:hover:text-accent"
           >
             +55 71-98161-8308
           </a>
           <a
             href="mailto:comercial@p2psaudeeseguranca.com.br"
-            className="hover:text-accent hover:underline"
+            className="hover:text-secondary hover:underline dark:hover:text-accent"
           >
             comercial@p2psaudeeseguranca.com.br
           </a>
           <p>siga nossas redes sociais</p>
           <div className="flex flex-row gap-6">
             <Link
-              className="hover:text-accent"
+              className="hover:text-secondary dark:hover:text-accent"
               href="https://www.instagram.com/p2psaudeeseg/"
               target="_blank"
               rel="noopener noreferrer"
@@ -119,7 +119,7 @@ export default function Contato() {
               <SiInstagram />
             </Link>
             <Link
-              className="hover:text-accent"
+              className="hover:text-secondary dark:hover:text-accent"
               href="https://www.facebook.com/p2psaudeeseg?_rdc=1&_rdr"
               target="_blank"
               rel="noopener noreferrer"
@@ -211,7 +211,12 @@ export default function Contato() {
                   <FormItem>
                     <FormLabel>Quantidade de funcionários</FormLabel>
                     <FormControl>
-                      <Input type="number" {...field} />
+                      <Input
+                        placeholder="0"
+                        {...field}
+                        type="number"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
